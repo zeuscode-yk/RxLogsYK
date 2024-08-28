@@ -53,7 +53,8 @@ data class LogsConfig(
         var savePath: String = "PLogs", //Path where log files will be created
         var exportPath: String = "PLogs", //Path where log files will be exported as zip
         var csvDelimiter: String = "", //Delimiter for CSV files
-        var exportFormatted: Boolean? = true
+        var exportFormatted: Boolean? = true,
+        var saveErrorPath:String = "PLogsError"
 ) {
 
     val TAG = "LogsConfig"

@@ -65,6 +65,7 @@ class MainApplication : Application() {
                 timeStampFormat = TimeStampFormat.TIME_FORMAT_READABLE_2,
                 zipFilesOnly = false,
                 savePath = File(context.getExternalFilesDir(null), "PLogs").path,
+                saveErrorPath = File(context.getExternalFilesDir(null), "PLogsError").path,
                 zipFileName = "MyLogs",
                 exportPath = File(
                     context.getExternalFilesDir(null),

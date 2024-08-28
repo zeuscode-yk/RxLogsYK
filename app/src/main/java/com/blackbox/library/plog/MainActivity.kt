@@ -290,40 +290,41 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun printException() {
-        val time = System.currentTimeMillis()
-
-        if (time.toInt() % 2 == 0) {
-            PLog.logThis(
-                _tag,
-                "reportError",
-                info = "Some Info",
-                exception = Exception("This is an Exception!"),
-                level = LogLevel.ERROR
-            )
-        } else {
-            PLog.logThis(
-                _tag,
-                "reportError",
-                Throwable("This is an severe Throwable!"),
-                LogLevel.SEVERE
-            )
-        }
-
-        try {
-            val a = arrayListOf<Int>()
-            val d = a[2]
-            Log.i(_tag, d.toString())
-        } catch (exception: java.lang.Exception) {
-            PLog.logThis(_tag, "printException", exception = exception, level = LogLevel.ERROR)
-        }
-
-        try {
-            val a = 0 / 1
-            val d = a - 50
-            Log.i(_tag, d.toString())
-        } catch (throwable: Throwable) {
-            PLog.logThis(_tag, "printException", throwable = throwable, level = LogLevel.ERROR)
-        }
+        PLog.logThis(_tag,"test","hi natasha",LogLevel.ERROR)
+//        val time = System.currentTimeMillis()
+//
+//        if (time.toInt() % 2 == 0) {
+//            PLog.logThis(
+//                _tag,
+//                "reportError",
+//                info = "Some Info",
+//                exception = Exception("This is an Exception!"),
+//                level = LogLevel.ERROR
+//            )
+//        } else {
+//            PLog.logThis(
+//                _tag,
+//                "reportError",
+//                Throwable("This is an severe Throwable!"),
+//                LogLevel.SEVERE
+//            )
+//        }
+//
+//        try {
+//            val a = arrayListOf<Int>()
+//            val d = a[2]
+//            Log.i(_tag, d.toString())
+//        } catch (exception: java.lang.Exception) {
+//            PLog.logThis(_tag, "printException", exception = exception, level = LogLevel.ERROR)
+//        }
+//
+//        try {
+//            val a = 0 / 1
+//            val d = a - 50
+//            Log.i(_tag, d.toString())
+//        } catch (throwable: Throwable) {
+//            PLog.logThis(_tag, "printException", throwable = throwable, level = LogLevel.ERROR)
+//        }
     }
 
     override fun onRequestPermissionsResult(

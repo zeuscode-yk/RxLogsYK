@@ -67,8 +67,7 @@ open class PLogImpl {
      *
      * @return the save path
      */
-    internal val logPath: String
-        get() = getLogPath(getConfig())
+    internal var logPath: String  = getLogPath(getConfig())
 
     /*
      * This will set logs configuration.
@@ -223,6 +222,12 @@ open class PLogImpl {
     }
 
     internal fun writeAndExportLog(data: String, type: LogLevel) {
+        if(type.level == "ERROR" || type.level == "SEVERE"){
+            logPath = getErrorLogPath(getConfig())
+        }
+        else{
+            logPath = getLogPath(getConfig())
+        }
         if (PLogImpl.isEncryptionEnabled()) {
             LogWriter.writeEncryptedLogs(data)
         } else {

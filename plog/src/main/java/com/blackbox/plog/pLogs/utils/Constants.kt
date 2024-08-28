@@ -28,6 +28,12 @@ fun getLogPath(logsConfig: LogsConfig?): String {
     return file.path + File.separator
 }
 
+fun getErrorLogPath(logsConfig: LogsConfig?): String {
+    val uri = Uri.parse(logsConfig?.saveErrorPath + File.separator)
+    val file = File(uri.path)
+    return file.path + File.separator
+}
+
 fun getExportPath(logsConfig: LogsConfig?): String {
     val uri = Uri.parse(logsConfig?.exportPath + File.separator)
     val file = File(uri.path)
