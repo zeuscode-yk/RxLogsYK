@@ -69,9 +69,9 @@ object FilterUtils {
         val rootFolderName = LOG_FOLDER
 
         val rootFolderPath = if(logType=="ERROR"){
-            PLogImpl.getConfig()?.savePath + rootFolderName + File.separator
-        }else{
             PLogImpl.getConfig()?.saveErrorPath + rootFolderName + File.separator
+        }else{
+            PLogImpl.getConfig()?.savePath + rootFolderName + File.separator
         }
 
         when (requestType) {
