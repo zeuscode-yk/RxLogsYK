@@ -8,6 +8,7 @@ import com.blackbox.plog.pLogs.events.LogEvents
 import com.blackbox.plog.pLogs.filter.FilterUtils
 import com.blackbox.plog.pLogs.filter.PlogFilters
 import com.blackbox.plog.pLogs.impl.PLogImpl
+import com.blackbox.plog.pLogs.models.LogType
 import com.blackbox.plog.utils.RxBus
 import com.blackbox.plog.utils.zip
 import com.blackbox.plog.utils.zipAll
@@ -38,7 +39,7 @@ object LogExporter {
     /*
      * Will filter & export log files to zip package.
      */
-    fun getZippedLogs(type: String, exportDecrypted: Boolean): Observable<String> {
+    fun getZippedLogs(type: String, exportDecrypted: Boolean,logType: String): Observable<String> {
 
         return Observable.create {
 
@@ -48,7 +49,7 @@ object LogExporter {
 
                 FilterUtils.prepareOutputFile(exportPath)
 
-                this.files = getFilesForRequestedType(type)
+                this.files = getFilesForRequestedType(type, logType)
 
                 compressPackage(emitter, exportDecrypted)
             } else {
@@ -89,13 +90,13 @@ object LogExporter {
     /*
      * Will return logged data in log files.
      */
-    fun printLogsForType(type: String, printDecrypted: Boolean): Flowable<String> {
+    fun printLogsForType(type: String, printDecrypted: Boolean,logType: String): Flowable<String> {
 
         val flowableOnSubscribe = FlowableOnSubscribe<String> { emitter ->
 
             if (PLog.isLogsConfigSet()) {
 
-                val files = getFilesForRequestedType(type)
+                val files = getFilesForRequestedType(type,logType)
                 Log.i(TAG, "printLogsForType: Found ${files.second.size} files.")
 
                 if (files.second.isEmpty()) {

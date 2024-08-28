@@ -69,6 +69,10 @@ open class PLogImpl {
      */
     internal var logPath: String  = getLogPath(getConfig())
 
+    internal val logInfoPath:String = getLogPath(getConfig())
+
+    internal val logErrorPath:String = getErrorLogPath(getConfig())
+
     /*
      * This will set logs configuration.
      *

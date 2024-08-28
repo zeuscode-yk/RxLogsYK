@@ -179,15 +179,15 @@ class MainActivity : AppCompatActivity() {
 
         //Will print logged data in PLogs
         print_plogs_hour.setOnClickListener {
-            printPLogs(ExportType.LAST_HOUR)
+            printPLogs(ExportType.LAST_HOUR, "ERROR")
         }
 
         print_plogs_day.setOnClickListener {
-            printPLogs(ExportType.TODAY)
+            printPLogs(ExportType.TODAY, "ERROR")
         }
 
         print_all.setOnClickListener {
-            printPLogs(ExportType.ALL)
+            printPLogs(ExportType.ALL, "ERROR")
         }
 
         //Will print logged data in DataLogs
@@ -212,7 +212,7 @@ class MainActivity : AppCompatActivity() {
         PLog.exportLogsForType(
             ExportType.TODAY,
             exportDecrypted = MainApplication.isEncryptionEnabled
-        )
+        , "ERROR")
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
@@ -253,8 +253,8 @@ class MainActivity : AppCompatActivity() {
             )
     }
 
-    private fun printPLogs(exportType: ExportType) {
-        PLog.printLogsForType(exportType, printDecrypted = MainApplication.isEncryptionEnabled)
+    private fun printPLogs(exportType: ExportType,logType: String) {
+        PLog.printLogsForType(exportType, printDecrypted = MainApplication.isEncryptionEnabled,logType)
             .retry(2)
             .subscribeBy(
                 onNext = {

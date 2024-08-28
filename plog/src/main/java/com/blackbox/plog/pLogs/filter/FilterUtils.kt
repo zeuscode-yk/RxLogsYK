@@ -63,11 +63,16 @@ object FilterUtils {
     /*
      * Returns path of Logs based on selected Directory Structure.
      */
-    internal fun getPathForType(requestType: ExportType): String {
+    internal fun getPathForType(requestType: ExportType, logType: String): String {
 
         //Create Root folder
         val rootFolderName = LOG_FOLDER
-        val rootFolderPath = PLog.logPath + rootFolderName + File.separator
+
+        val rootFolderPath = if(logType=="ERROR"){
+            PLog.logErrorPath + rootFolderName + File.separator
+        }else{
+            PLog.logInfoPath + rootFolderName + File.separator
+        }
 
         when (requestType) {
 

@@ -21,6 +21,7 @@ import com.blackbox.plog.pLogs.filter.PlogFilters
 import com.blackbox.plog.pLogs.impl.AutoExportHelper
 import com.blackbox.plog.pLogs.impl.PLogImpl
 import com.blackbox.plog.pLogs.models.LogLevel
+import com.blackbox.plog.pLogs.models.LogType
 import com.blackbox.plog.pLogs.utils.LOG_FOLDER
 import com.blackbox.plog.utils.RxBus
 import com.blackbox.plog.utils.getLogsSavedPaths
@@ -363,8 +364,8 @@ object PLog : PLogImpl() {
      * @param type the type
      * @return the logs
      */
-    fun exportLogsForType(type: ExportType, exportDecrypted: Boolean = false): Observable<String> {
-        return LogExporter.getZippedLogs(type.type, exportDecrypted)
+    fun exportLogsForType(type: ExportType, exportDecrypted: Boolean = false,logType: String): Observable<String> {
+        return LogExporter.getZippedLogs(type.type, exportDecrypted,logType)
     }
 
     /**
@@ -386,8 +387,8 @@ object PLog : PLogImpl() {
      *
      * @return the String data
      */
-    fun printLogsForType(type: ExportType, printDecrypted: Boolean = false): Flowable<String> {
-        return LogExporter.printLogsForType(type.type, printDecrypted)
+    fun printLogsForType(type: ExportType, printDecrypted: Boolean = false,logType: String): Flowable<String> {
+        return LogExporter.printLogsForType(type.type, printDecrypted,logType)
     }
 
     /**
