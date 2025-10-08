@@ -7,6 +7,9 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
+
+    namespace "com.blackbox.library.plog"
+
     compileSdkVersion 33
     defaultConfig {
         applicationId "com.blackbox.library.plog"

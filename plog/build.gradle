@@ -4,6 +4,9 @@ apply plugin: 'kotlin-android'
 group = 'com.github.umair13adil'
 
 android {
+
+    namespace "com.blackbox.plog"
+
     compileSdkVersion 33
     defaultConfig {
         minSdkVersion 16
