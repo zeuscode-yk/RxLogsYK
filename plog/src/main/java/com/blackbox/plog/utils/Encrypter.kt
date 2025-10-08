@@ -18,7 +18,7 @@ import javax.crypto.spec.SecretKeySpec
 class Encrypter() {
 
     //Algorithm type used for encryption & decryption
-    private val ALGORITHM = "AES"
+    private val ALGORITHM = "AES/CBC/PKCS5Padding"
 
     var aes2: Cipher? = null
 
@@ -67,7 +67,7 @@ class Encrypter() {
     fun generateKey(encKey: String): SecretKey {
         val salt = checkIfKeyValid(encKey)
         val key = salt.toBytes()
-        return SecretKeySpec(key, "AES")
+        return SecretKeySpec(key, ALGORITHM)
     }
 
     /*
